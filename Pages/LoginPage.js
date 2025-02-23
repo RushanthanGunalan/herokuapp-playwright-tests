@@ -16,4 +16,13 @@ export default class LoginPage {
     await this.actions.fill("#password", password);
     await this.actions.click('button[type="submit"]');
   }
+
+  async getErrorMessage() {
+    return await this.actions.getText("#flash");
+  }
+
+  async assertedErrorMessage(actualMessage) {
+    const expectedMessage = await this.getErrorMessage();
+    expect(expectedMessage).toContain(actualMessage);
+  }
 }

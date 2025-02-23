@@ -4,7 +4,7 @@ export default class CommonActions {
   }
 
   async navigate(url) {
-    await this.page.navigate(url);
+    await this.page.goto(url);
   }
 
   async click(selector) {
@@ -16,7 +16,7 @@ export default class CommonActions {
   }
 
   async getText(selector) {
-    await this.page.textContent(selector);
+    return await this.page.textContent(selector);
   }
 
   async isChecked(selector) {

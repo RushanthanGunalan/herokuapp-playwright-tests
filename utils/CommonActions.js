@@ -20,6 +20,6 @@ export default class CommonActions {
   }
 
   async isChecked(selector) {
-    await this.page.isChecked(selector);
+    return await this.page.isChecked(selector);
   }
 }

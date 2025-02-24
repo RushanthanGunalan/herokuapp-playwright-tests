@@ -22,4 +22,8 @@ export default class CommonActions {
   async isChecked(selector) {
     return await this.page.isChecked(selector);
   }
+
+  async reload() {
+    await this.page.reload(); // Refresh the current page
+  }
 }

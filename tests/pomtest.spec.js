@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import PomManager from "../Pages/PomManager";
+import CommonActions from "./../utils/CommonActions";
 
 let pm;
 
@@ -60,7 +61,7 @@ test.describe("Notify Message Verification", () => {
     await page.close();
   });
 
-  test.only("test notify", async () => {
+  test("test notify", async () => {
     await pm.notifyPage.navigate();
     await pm.notifyPage.clickNotify();
     // await pm.notifyPage.assertNotifyMessage(
@@ -71,5 +72,23 @@ test.describe("Notify Message Verification", () => {
       "Action unsuccesful, please try again",
       "Action successful",
     ]);
+  });
+});
+
+test.describe("Refreshing the page once to find the typo", () => {
+  test.beforeEach(async ({ page }) => {
+    pm = new PomManager(page);
+  });
+
+  test.afterEach(async ({ page }) => {
+    await page.close();
+  });
+
+  test("Checking for the randomized typo", async () => {
+    await pm.typoPage.navigate();
+    await pm.typoPage.reloadPage();
+    await pm.typoPage.assertTypo(
+      "Sometimes you'll see a typo, other times you won't."
+    );
   });
 });

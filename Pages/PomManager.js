@@ -3,6 +3,7 @@ import LoginPage from "./LoginPage";
 import SecurePage from "./SecurePage";
 import CheckboxPage from "./CheckboxPage";
 import NotificationPage from "./NotificationPage";
+import TypoPage from "./TypoPage";
 
 export default class PomManager {
   constructor(page) {
@@ -11,5 +12,6 @@ export default class PomManager {
     this.securePage = new SecurePage(page);
     this.checkboxPage = new CheckboxPage(page);
     this.notifyPage = new NotificationPage(page);
+    this.typoPage = new TypoPage(page);
   }
 }
